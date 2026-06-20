@@ -4,6 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
     <!-- Bean definitions go here -->
+
+    <bean id="petrolEng" class="com.test.PetrolEngine"> </bean>
+
+    <bean id="car" class="com.test.Car">
+        <property name="engine" ref="petrolEng"> </property>
+    </bean>
 
 </beans>
