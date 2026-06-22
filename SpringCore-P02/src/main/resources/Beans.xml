@@ -8,7 +8,7 @@
     <!-- Bean definitions go here -->
 
 <!--    Setter Injection-->
-    <bean id="petrolEng" class="com.test.PetrolEngine"> </bean>
+    <bean id="petrolEng" class="com.test.PetrolEngine" scope="prototype"> </bean>
 
 
     <bean id="car" class="com.test.Car">
