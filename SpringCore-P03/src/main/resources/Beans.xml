@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Bean definitions go here -->
+
+<!--    Setter Injection-->
+    <bean id="engine" class="com.test.PetrolEngine"> </bean>
+<!--    To inject bean into car... id name must be same as Car engine object name-->
+
+<!--    <bean id="dieselEng" class="com.test.DieselEngine" autowire-candidate="false"> </bean>-->
+
+<!-- 1. By Name Example   <bean id="car" class="com.test.Car" autowire="byName"/> -->
+
+<!--    <bean id="car" class="com.test.Car" autowire="byType"/>-->
+
+<!--    <bean id="car" class="com.test.Car" autowire="constructor"/>-->
+
+    <bean id="car" class="com.test.Car" autowire="no"/>
+
+</beans>
