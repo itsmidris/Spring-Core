@@ -1,7 +1,12 @@
 package com.test.JPAP02.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.usertype.CompositeUserType;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -17,6 +22,15 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+    @ManyToMany
+    @JoinTable(
+            name = "student_course",
+            joinColumns =@JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    @JsonIgnoreProperties("student")
+    public Set<Course> courses= new HashSet<>();
 
     public Long getId() {
         return id;
