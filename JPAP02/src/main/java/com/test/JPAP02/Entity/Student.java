@@ -14,6 +14,10 @@ public class Student {
     @OneToOne(mappedBy="student",cascade = CascadeType.ALL)
     private Laptop laptop;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
     public Long getId() {
         return id;
     }
