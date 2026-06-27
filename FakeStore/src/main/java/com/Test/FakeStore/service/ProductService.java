@@ -54,4 +54,14 @@ public class ProductService {
 
         return Arrays.asList(categories);
     }
+
+    public List<Product> getLimitedProducts(int limit){
+        String url = URL + "?limit=" + limit;
+        Product[] products = template.getForObject(url, Product[].class);
+
+        if (products == null){
+            return List.of();
+        }
+        return Arrays.asList(products);
+    }
 }

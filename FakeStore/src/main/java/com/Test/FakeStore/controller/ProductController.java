@@ -4,10 +4,7 @@ package com.Test.FakeStore.controller;
 import com.Test.FakeStore.dto.Product;
 import com.Test.FakeStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +33,10 @@ public class ProductController {
     @GetMapping("/categories")
     public List<String> getCategories(){
         return service.getAllCategories();
+    }
+
+    @GetMapping("/limit")
+    public List<Product> getLimitedProducts(@RequestParam int limit){
+        return service.getLimitedProducts(limit);
     }
 }
