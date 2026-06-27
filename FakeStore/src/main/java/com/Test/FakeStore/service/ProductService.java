@@ -2,6 +2,10 @@ package com.Test.FakeStore.service;
 
 
 import com.Test.FakeStore.dto.Product;
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -68,5 +72,15 @@ public class ProductService {
     public Product addProduct(Product product){
         Product response = template.postForObject(URL,product,Product.class);
         return response;
+    }
+
+    public Product updateProduct(int id, Product product){
+        String url = URL + "/" + id;
+
+        HttpEntity<Product> entity = new HttpEntity<>(product);
+
+        ResponseEntity<Product> response = template.exchange(url, HttpMethod.PUT,entity,Product.class);
+
+        return response.getBody();
     }
 }

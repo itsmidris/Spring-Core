@@ -44,4 +44,9 @@ public class ProductController {
     public Product addProduct(@RequestBody Product product){
         return service.addProduct(product);
     }
+
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable int id, @RequestBody Product product){
+        return service.updateProduct(id, product);
+    }
 }
