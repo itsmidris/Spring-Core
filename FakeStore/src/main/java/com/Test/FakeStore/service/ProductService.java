@@ -64,4 +64,9 @@ public class ProductService {
         }
         return Arrays.asList(products);
     }
+
+    public Product addProduct(Product product){
+        Product response = template.postForObject(URL,product,Product.class);
+        return response;
+    }
 }

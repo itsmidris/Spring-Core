@@ -39,4 +39,9 @@ public class ProductController {
     public List<Product> getLimitedProducts(@RequestParam int limit){
         return service.getLimitedProducts(limit);
     }
+
+    @PostMapping
+    public Product addProduct(@RequestBody Product product){
+        return service.addProduct(product);
+    }
 }
