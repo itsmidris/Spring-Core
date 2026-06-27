@@ -83,4 +83,9 @@ public class ProductService {
 
         return response.getBody();
     }
+
+    public void deleteProduct(int id){
+        String url = URL + "/" + id;
+        template.delete(url);
+    }
 }

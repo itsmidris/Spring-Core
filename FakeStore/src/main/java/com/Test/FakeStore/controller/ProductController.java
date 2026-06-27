@@ -4,6 +4,7 @@ package com.Test.FakeStore.controller;
 import com.Test.FakeStore.dto.Product;
 import com.Test.FakeStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,5 +49,11 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable int id, @RequestBody Product product){
         return service.updateProduct(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id){
+        service.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
