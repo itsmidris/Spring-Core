@@ -32,4 +32,15 @@ public class ProductService {
 //    Answer:
 //    JSON Object  -> Product.class
 //    JSON Array   -> Product[].class
+
+    public List<Product> getProductByCategory(String category){
+        String url = URL + "/category" + category;
+        Product[] products = template.getForObject(url, Product[].class);
+
+        if (products == null){
+            return List.of();
+        }
+
+        return Arrays.asList(products);
+    }
 }
