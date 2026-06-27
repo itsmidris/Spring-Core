@@ -20,4 +20,16 @@ public class ProductService {
 
         return Arrays.asList(products);
     }
+
+    public Product getProductById(int id){
+        String url = URL + "/" + id;
+        Product product = template.getForObject(url, Product.class);
+
+        return product;
+    }
+
+//    When should we use Product.class vs Product[].class?
+//    Answer:
+//    JSON Object  -> Product.class
+//    JSON Array   -> Product[].class
 }
