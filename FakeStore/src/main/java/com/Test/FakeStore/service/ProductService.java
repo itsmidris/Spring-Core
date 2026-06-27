@@ -43,4 +43,15 @@ public class ProductService {
 
         return Arrays.asList(products);
     }
+
+    public List<String> getAllCategories(){
+        String url = URL + "/categories";
+        String[] categories = template.getForObject(url, String[].class);
+
+        if (categories == null){
+            return List.of();
+        }
+
+        return Arrays.asList(categories);
+    }
 }

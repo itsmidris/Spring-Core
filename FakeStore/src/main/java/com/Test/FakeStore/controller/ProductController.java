@@ -32,4 +32,9 @@ public class ProductController {
     public List<Product> getProductsByCategory(@PathVariable String category){
         return service.getProductByCategory(category);
     }
+
+    @GetMapping("/categories")
+    public List<String> getCategories(){
+        return service.getAllCategories();
+    }
 }
