@@ -1,6 +1,7 @@
 package com.Test.FakeStore.controller;
 
 
+import com.Test.FakeStore.dto.ApiResponse;
 import com.Test.FakeStore.dto.Product;
 import com.Test.FakeStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,17 @@ public class ProductController {
         return service.getAllProduct();
     }
 
+//    @GetMapping("/{id}")
+//    public Product getProductById(@PathVariable int id){
+//        return service.getProductById(id);
+//    }
+
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable int id){
-        return service.getProductById(id);
+    public ResponseEntity<ApiResponse<Product>> getProductById(@PathVariable int id) {
+        Product product = service.getProductById(id);
+
+        ApiResponse<Product> response = new ApiResponse<>(true,"Product Fetched Successfully",product);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/category/{category}")
