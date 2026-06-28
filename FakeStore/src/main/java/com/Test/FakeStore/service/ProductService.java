@@ -3,7 +3,6 @@ package com.Test.FakeStore.service;
 
 import com.Test.FakeStore.dto.Product;
 import com.Test.FakeStore.exception.ProductNotFoundException;
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
