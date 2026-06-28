@@ -2,6 +2,7 @@ package com.Test.FakeStore.service;
 
 
 import com.Test.FakeStore.dto.Product;
+import com.Test.FakeStore.exception.ProductNotFoundException;
 import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -28,6 +29,10 @@ public class ProductService {
     public Product getProductById(int id){
         String url = URL + "/" + id;
         Product product = template.getForObject(url, Product.class);
+
+        if (product == null){
+            throw new ProductNotFoundException("Product not found with this id: " + id);
+        }
 
         return product;
     }
