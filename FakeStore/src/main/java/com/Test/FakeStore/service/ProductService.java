@@ -2,6 +2,8 @@ package com.Test.FakeStore.service;
 
 import com.Test.FakeStore.dto.Product;
 import com.Test.FakeStore.exception.ProductNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -14,23 +16,31 @@ import java.util.List;
 @Service
 public class ProductService {
 
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
+
     private RestTemplate template = new RestTemplate();
 
     private final String URL = "https://fakestoreapi.com/products";
 
     public List<Product> getAllProduct() {
+        log.info("Fetching all products");
+
         Product[] products = template.getForObject(URL, Product[].class);
 
         return Arrays.asList(products);
     }
 
     public Product getProductById(int id){
+        log.info("Fetching product with id: {}",id);
+
         String url = URL + "/" + id;
         Product product = template.getForObject(url, Product.class);
 
-        if (product == null){
-            throw new ProductNotFoundException("Product not found with this id: " + id);
+        if (product == null) {
+            log.warn("Product not found with id: {}",id);
+            throw new ProductNotFoundException("Product not found with id: " + id);
         }
+        log.info("Product fetched Successfully: {}",product.getTitle());
 
         return product;
     }
@@ -41,7 +51,7 @@ public class ProductService {
 //    JSON Array   -> Product[].class
 
     public List<Product> getProductByCategory(String category){
-        String url = URL + "/category" + category;
+        String url = URL + "/category/" + category;
         Product[] products = template.getForObject(url, Product[].class);
 
         if (products == null){
