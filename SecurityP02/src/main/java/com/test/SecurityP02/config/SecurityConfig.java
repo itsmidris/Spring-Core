@@ -18,7 +18,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth ->auth
                 .requestMatchers("/","/about","/contact").permitAll()
                 .requestMatchers("/balance","/transfer","/admin").authenticated()
-        ).formLogin(Customizer.withDefaults());
+        ).httpBasic(Customizer.withDefaults());
 
         return http.build();
     }
