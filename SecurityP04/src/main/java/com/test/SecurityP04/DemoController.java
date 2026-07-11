@@ -20,16 +20,19 @@ public class DemoController {
 
     @GetMapping("/public")
     public String publicMethod() {
+        System.out.println("Public method Called");
         return "This is Public Method";
     }
 
     @GetMapping("/admin")
     public String adminMethod() {
+        System.out.println("Admin Method Called");
         return "This is Admin Method";
     }
 
     @GetMapping("/user")
     public String userMethod() {
+        System.out.println("User Method Called");
         return "This is User Method";
     }
 }
