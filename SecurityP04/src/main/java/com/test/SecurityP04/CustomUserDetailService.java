@@ -21,6 +21,7 @@ public class CustomUserDetailService implements UserDetailsService {
         System.out.println("Found Username = "+user.getUsername() + " / " + user.getPassword());
         return new User(user.getUsername(),user.getPassword(),user.isEnabled(),true,true,true,
                 user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).toList()
+//              user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_"+role.getName())).toList()
         );
     }
 }
