@@ -2,10 +2,13 @@ package com.imran.Thymleaf_Tutorial.controller;
 
 
 import com.imran.Thymleaf_Tutorial.controller.model.User;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -45,5 +48,19 @@ public class UserController {
     @GetMapping("fragment-expression")
     public String fragmentExpression() {
         return "fragment-expression";
+    }
+
+    @GetMapping("/users")
+    public String users(Model model) {
+        User admin = new User("Admin", "admin@gmail.com", "ADMIN", "Male");
+        User mubarak = new User("Mubarak", "Mubarak@gmail.com", "User", "Male");
+        User Saud = new User("Saud", "Saud@gmail.com", "User", "Female");
+
+        List<User> users = new ArrayList<>();
+        users.add(admin);
+        users.add(mubarak);
+        users.add(Saud);
+        model.addAttribute("users", users);
+        return "users";
     }
 }
