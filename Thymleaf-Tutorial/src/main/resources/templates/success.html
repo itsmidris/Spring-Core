@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Successful</title>
+</head>
+<body>
+
+<div align="center">
+  <h1>Registration Successful 🎉</h1>
+
+  <p>Thank you for registering.</p>
+  <hr>
+
+  <h2>Your Details</h2>
+
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Name</th>
+      <td th:text="${userForm.name}"></td>
+    </tr>
+
+    <tr>
+      <th>Email</th>
+      <td th:text="${userForm.email}"></td>
+    </tr>
+
+    <tr>
+      <th>Password</th>
+      <td th:text="${userForm.password}"></td>
+    </tr>
+
+    <tr>
+      <th>Gender</th>
+      <td th:text="${userForm.gender}"></td>
+    </tr>
+
+    <tr>
+      <th>Profession</th>
+      <td th:text="${userForm.profession}"></td>
+    </tr>
+
+    <tr>
+      <th>Address</th>
+      <td th:text="${userForm.address}"></td>
+    </tr>
+  </table>
+
+  <br>
+
+  <a th:href="@{/register}">Register Another User</a>
+</div>
+
+</body>
+</html>
