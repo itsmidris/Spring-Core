@@ -41,6 +41,7 @@ public class FormController {
         // Send submitted data to success page
         model.addAttribute("userForm", userForm);
 
-        return "success";
+//        return "success";
+        return "new-success";
     }
 }
