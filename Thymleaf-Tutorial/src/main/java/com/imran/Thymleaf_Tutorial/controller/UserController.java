@@ -27,4 +27,10 @@ public class UserController {
 
         return "selection-expression";
     }
+
+    //handler method to handle message expression request
+    @GetMapping("message-expression")
+    public String messageExpression() {
+        return "message-expression";
+    }
 }
